@@ -2,14 +2,14 @@
 
 Hello!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhandshou%2Fastro-blog%2Ftree%2Fvercel-pivot&env=TINA_PUBLIC_CLIENT_ID,TINA_TOKEN,TINA_SEARCH_TOKEN&envDescription=API%20Keys%20required%20and%20where%20to%20get%20them.&envLink=https%3A%2F%2Fgithub.com%2Fhandshou%2Fastro-blog%2Fblob%2Fvercel-pivot%2FREADME.md)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhandshou%2Fastro-blog%2Ftree%2Fvercel-pivot&env=TINA_PUBLIC_CLIENT_ID,TINA_CONTENT_TOKEN,TINA_SEARCH_TOKEN&envDescription=API%20Keys%20required%20and%20where%20to%20get%20them.&envLink=https%3A%2F%2Fgithub.com%2Fhandshou%2Fastro-blog%2Fblob%2Fvercel-pivot%2FREADME.md)
 
 ## Environment Variables
 
 | Variable               | Link to get it                               |
 | :--------------------- | :------------------------------------------- |
 | TINA_PUBLIC_CLIENT_ID  |                                              |
-| TINA_TOKEN             |                                              |
+| TINA_CONTENT_TOKEN     |                                              |
 | TINA_SEARCH_TOKEN      |                                              |
 
 ## 🧞 Commands
