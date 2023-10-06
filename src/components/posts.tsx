@@ -1,6 +1,6 @@
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { PostsQuery } from "../../tina/__generated__/types";
+import { type PostsQuery } from "../../tina/__generated__/types";
 
 export const MyComponent = (props: {
     data: PostsQuery,
