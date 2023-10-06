@@ -1,0 +1,75 @@
+---
+const { 
+  url = '#', 
+  title = 'Default project title', 
+  footer = 'Last updated'
+} = Astro.props
+---
+
+<div class="card">
+  <div class="card__content">
+    <h2>
+      <a href={url}>{title}</a>
+    </h2>
+    <p>
+      <slot>Default description.</slot>
+    </p>
+    <small>
+      {footer}
+    </small>
+  </div>
+</div>
+
+<style lang="scss" is:global>
+  .card__content a:visited {
+    color: #8e32dc;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    max-width: 300px;
+    min-height: 10em;
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+    transition: box-shadow 0.15s ease-in-out;
+    &:hover,
+    &:focus-within {
+      box-shadow: 0 0 0 0.25rem;
+    }
+    &:focus-within a:focus {
+      text-decoration: none;
+      box-shadow: none;
+      outline: none;
+    }
+    h2 {
+        margin: 0.5rem 0 0.2rem 0;
+    }
+    margin: 0.5rem;
+    background: white;
+  }
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0rem 1rem;
+    a {
+      text-decoration: none;
+      &:focus {
+        text-decoration: underline;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+      }
+    }
+    :last-child {
+      margin-top: auto;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+</style>

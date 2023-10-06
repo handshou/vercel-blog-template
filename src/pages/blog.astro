@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseHead from '../components/BaseHead.astro';
+import Browser from '../components/Browser.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+
+const postsCollection = await getCollection("posts");
+
+const posts = (await postsCollection.sort(
+	(a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+));
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			h1 {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+			}
+			ul {
+				list-style-type: none;
+				padding: unset;
+			}
+			ul li {
+				display: flex;
+			}
+			ul li time {
+				flex: 0 0 130px;
+				font-style: italic;
+				color: #595959;
+			}
+			ul li a:visited {
+				color: #8e32dc;
+			}
+		</style>
+	</head>
+	<body>
+		<Browser>
+			<main>
+                <h1>
+                    🪴 garden 
+                </h1>
+				<section>
+					<ul>
+						{
+							postsCollection.map((post) => (
+								<li>
+									<time datetime={post.data.pubDate}>
+										{new Date(post.data.pubDate).toLocaleDateString('en-us', {
+											year: 'numeric',
+											month: 'short',
+											day: 'numeric',
+										})}
+									</time>
+									<a href={`blog/${post.slug}`}>{post.data.title}</a>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+			</main>
+		</Browser>
+	</body>
+</html>

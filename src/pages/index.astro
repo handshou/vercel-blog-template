@@ -1,0 +1,66 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Browser from '../components/Browser.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Browser title={SITE_TITLE}>
+			<main class="content">
+				<h1>🧑🏽‍🌾 gardener</h1>
+				<p>
+					Welcome to my garden 🪧
+				</p>
+				    Look forward to...
+                    <ul class="list">
+                        <li>
+                            Tend the 
+                            <a href="/blog">
+                                <b>🪴 garden</b>
+                            </a>
+                        </li>
+                        
+                        {/*
+                        <li>
+                            Go on a cycling 
+                            <a href="/journey">
+                                <b>🚴 journey</b>
+                             </a>
+                        </li>
+                        */}
+
+                        <li>
+                            See tech 
+                            <a href="/projects">
+                                <b>👨‍💻 projects</b>
+                            </a>
+                        </li>
+                        {/*
+                        <li>
+                            Browse photo 
+                            <a href="albums">
+                                <b>📷 albums</b> 
+                            </a>
+                        </li>
+                        */}
+                    </ul>
+			</main>
+		</Browser>
+	</body>
+</html>
+
+<style>
+	.content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+    :visited {
+        text-decoration-color: #EEE;
+    }
+</style>

@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseHead from '../components/BaseHead.astro';
+import Browser from '../components/Browser.astro';
+import Card from '../components/Card.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+
+const projectsCollection = await getCollection('projects');
+
+const projects = await projectsCollection.sort(
+    (a, b) => new Date(b.data.pubDate.valueOf()) - new Date(a.data.pubDate.valueOf())
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			h1 {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+			}
+			.project-content {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+				justify-content: space-evenly;
+				gap: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<Browser>
+			<h1>👨‍💻 projects</h1>
+			<main>
+				<section>
+					<div class="project-content">
+						{
+							projects.map((proj) => (
+								<Card 
+									title={proj.data.title}
+									footer={`Updated ${
+										new Date(proj.data.pubDate).toLocaleDateString('en-us', {
+											year: 'numeric',
+											month: 'short',
+											day: 'numeric',
+									})}`}
+									url={`/projects/${proj.slug}`}>
+									{proj.data.description}
+								</Card>
+							))
+						}
+					</div>
+				</section>
+			</main>
+		</Browser>
+	</body>
+</html>
