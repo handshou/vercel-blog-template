@@ -1,0 +1,140 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../config';
+const isNotionApiTokenSet = !!import.meta.env.NOTION_API_TOKEN;
+---
+
+<header>
+	<h2>
+		{SITE_TITLE}
+	</h2>
+	<nav>
+		<div class="wrapper">
+			<div class="btn close-btn"></div>
+			<div class="btn min-btn"></div>
+			<div class="btn max-btn"></div>
+		</div>
+		<div class="tabs">
+			<HeaderLink href="/" emoji="🧑🏽‍🌾">gardener</HeaderLink>
+			<HeaderLink href="/blog" emoji="🪴">garden</HeaderLink>
+			{/*
+            <HeaderLink href="/journey" emoji="🚴">journey</HeaderLink>
+            */}
+			<HeaderLink href="/projects" emoji="👨‍💻">projects</HeaderLink>
+            {/*
+			<HeaderLink href="/albums" emoji="📷">albums</HeaderLink>
+            */}
+		</div>
+		<div class="wrapper"></div>
+	</nav>
+</header>
+<body class="bg">
+	<div class="content">
+		<div class="scroll">
+            <div class="token">
+		    {
+			    isNotionApiTokenSet
+			    ? ""
+		    	: "❌ NOTION_API_TOKEN not set"
+	    	}
+            </div>
+			<slot />
+		</div>
+	</div>
+</body>
+<style>
+	.tabs {
+		display: flex;
+		flex-direction: row;
+		width: 36em;
+		gap: 0em;
+		justify-content: space-between;
+		align-items: center;
+		font-family:Arial, Helvetica, sans-serif;
+		font-weight: 100;
+	}
+	.wrapper {
+ 		display: flex; 
+    	flex-direction: row;
+		width: 5em;
+		justify-content: left;
+		align-items: center;
+		margin-left: 0.3em;
+	    margin-right: 0.7em;
+    }
+    @media (max-width: 550px) {
+	    .wrapper {
+    		display: none; 
+	    }
+        .tabs {
+            margin-left: 0.5em;
+        }
+    }
+    .token {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+	.btn {
+		width: 0.65em;
+		height: 0.65em;
+		border-radius: 50%;
+		margin-right: 0.5em;
+	}
+	.btn:last-child {
+		margin-right: 0;
+	}
+	.close-btn {
+		background: #FF5D5B;
+		border: 1px solid #CF544D;
+	}
+	.max-btn {
+		background: #00CD4E;
+		border: 1px solid #0EA642;
+	}
+	.min-btn {
+		background: #FFBB39;
+		border: 1px solid #CFA64E	
+	}
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		filter: drop-shadow(0px 2px 3px #5e5e5e);
+		background-color: #5e5e5e;
+		border-radius: 0.5em 0.5em 0 0;
+		border-style: solid;
+		border-width: 5px 5px;
+		border-color: #5e5e5e;
+	}
+	.content {
+		filter: drop-shadow(0px 2px 3px #5e5e5e);
+		background-color: #F0F0F0;
+		border-radius: 0 0 0.5em 0.5em;
+		border-style: solid;
+		border-width: 0.1em;
+		border-color: #5e5e5e;
+	}
+	.scroll::-webkit-scrollbar { 
+    	display: none;  /* Safari and Chrome */
+		-ms-overflow-style: none;  /* Internet Explorer 10+ */
+    	scrollbar-width: none;  /* Firefox */
+	}
+	.scroll {
+		padding: 0 1em 1em 1em;
+		overflow-y: scroll;
+		height: 60vh;
+	}
+	.bg {
+		display: flex;
+		flex-direction: column;
+		background-color: #eeeeee;
+    }
+
+	/* header {
+		margin: 0em 0 2em;
+	}
+	h2 {
+		margin: 0.5em 0;
+	} */
+</style>

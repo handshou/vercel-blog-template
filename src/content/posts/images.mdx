@@ -1,0 +1,47 @@
+---
+title: "Images"
+description: "Thinking about hosting images"
+pubDate: "Apr 04 2023"
+---
+
+
+# Images
+
+
+There are a few great resources, but only one of which come straight from the co-founder of Notion, from Jake himself.
+
+
+He has written a framework for using Notion as a CMS in great detail, covered with documentation, tests and an entire monorepo spine to go along with that! Click [here](https://github.com/justjake/monorepo/blob/main/packages/notion-api/README.md) (repo) and [here](https://jake.tl/projects/notion-api#solving-image-hosting) (write up) to see more.
+
+
+And then [this guy](https://github.com/guillermodlpa) comes along and makes a script to upload to Cloudinary, seen [here](https://github.com/guillermodlpa/site/pull/3) (POC on Github) and [here](https://guillermodlpa.com/blog/how-to-render-images-from-the-notion-api-with-next-js-image-optimization) (write up).
+
+
+And then there’s Cozy, another guy working at Notion. Read how he setup his Notion blog, [here](https://www.coryetzkorn.com/blog/how-the-notion-api-powers-my-blog).
+
+
+Sometimes it seems to be a small part of a system, so small it makes no sense to exist. Anyway, I can fully takeaway from the details of implementation and thought process here, as a friend puts it:
+
+
+> Nothing better than someone else with a problem similar to yours that they’ve overcome
+
+
+[Here](https://blog.cloudflare.com/building-full-stack-with-pages/) is Cloudflare Pages’ method of processing images (is it free though?)
+
+
+It uses a combination of KV to store frequently read information, Durable Object for dynamic updating. Though, I don’t fully understand how this works. Thankfully, Macarthur has a write up [here](https://www.macarthur.me/posts/serving-notion-presigned-images-with-cloudflare) on how it all works.
+
+
+Also, more cool automation stuff! Being able to deploy locally using the follow commands looks to cut the dev feedback loop.
+
+
+```shell
+npm install wrangler@beta
+
+# Serve a directory
+npx wrangler pages dev ./public
+```
+
+
+This has become a problem for another day.
+

@@ -1,0 +1,71 @@
+---
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const { href, class: className, emoji, ...props } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive = href === pathname || href === pathname.replace(/\/$/, '')
+		|| href === pathname.replace(/\/[a-z-]*$/, '');
+---
+
+<a href={href} class:list={[className, { active: isActive }]} {...props}>
+	<div class="emoji">
+		{emoji}
+	</div>
+	<div class="title">
+		&nbsp;&nbsp;<slot />
+	</div>
+</a>
+<style>
+	a {
+		display: flex;
+		flex-direction: row;
+		font-size: 0.8em;
+		border: 1px;
+		border-color: #6e6e6e;
+		padding-left: 0.75em;
+		border-style: solid;
+		background-color: #6e6e6e;
+		border-radius: 0.3em;
+		text-decoration: none;
+		color: #aeaeae;
+		width: 30%;
+	}
+	a.active {
+		font-weight: 800;
+		color: #dedede;
+		border-color: #4e4e4e;
+		background-color: #4e4e4e;
+	}
+
+	a:hover {
+		/* border: 1px; */
+		/* border-style: solid; */
+		border-color: #4e4e4e; 
+		background-color: #4e4e4e;
+		transition: 0.5s;
+	}
+	@media (max-width: 550px) {
+		.emoji {
+			/* margin-left: 3em; */
+			/* margin-left: 4.5vw; */
+		}
+		.title {
+			display: none;
+			/* text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;		 */
+		}
+	}
+	/* @media (max-width: 490px) {
+		a {
+			flex-direction: column;
+		}
+		.title {
+			display: none;
+		}
+		.emoji {
+			margin-left: 1.5em;
+		}
+	} */
+</style>

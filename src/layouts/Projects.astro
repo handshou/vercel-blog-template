@@ -1,0 +1,54 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Browser from '../components/Browser.astro';
+import Backtrack from '../components/Backtrack.astro';
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		updatedDate?: string;
+		heroImage?: string;
+	};
+}
+
+const {
+	content: { title, description, pubDate: unconvertedPubDate, updatedDate, heroImage },
+} = Astro.props;
+
+let pubDate = new Date(unconvertedPubDate).toLocaleString('en-CA', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			.title {
+				font-size: 2em;
+				margin: 0.25em 0 0;
+			}
+			hr {
+				border-top: 1px solid #ddd;
+				margin: 1rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Browser>
+			<main>
+				<article>
+                    <Backtrack url="/projects" title="back to 👨‍💻 projects" />
+                    <br />
+					{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+					<slot />
+				</article>
+			</main>
+		</Browser>
+	</body>
+</html>
