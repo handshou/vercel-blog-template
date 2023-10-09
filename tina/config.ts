@@ -32,7 +32,8 @@ export default defineConfig({
                     // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
                     return `${values?.title
                         ?.toLowerCase()
-                        .replace(/[ !]/g, '-')}`
+                        .replace(/ /g, '-')
+                        .replace(/[!.,@#$%^&*()/\\+=]/g, '')}`
                 },
             },
             router: (props) => {
@@ -76,9 +77,10 @@ export default defineConfig({
                 readonly: true,
                 slugify: (values) => {
                     // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-                    return `${values?.topic || 'no-topic'}-${values?.title
+                    return `${values?.title
                         ?.toLowerCase()
-                        .replace(/ /g, '-')}`
+                        .replace(/ /g, '-')
+                        .replace(/[!.,@#$%^&*()/\\+=]/g, '')}`
                 },
             },
             router: (props) => {
