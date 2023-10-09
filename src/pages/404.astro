@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseHead from '../components/BaseHead.astro';
+import Browser from '../components/Browser.astro';
+import Card from '../components/Card.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			h1 {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+			}
+			ul {
+				list-style-type: none;
+				padding: unset;
+			}
+			ul li {
+				display: flex;
+			}
+			ul li time {
+				flex: 0 0 130px;
+				font-style: italic;
+				color: #595959;
+			}
+
+    	    .content {
+	    	    display: flex;
+	        	align-items: center;
+		        flex-direction: column;
+	        }
+		</style>
+	</head>
+	<body>
+		<Browser>
+			<h1>👨‍💻 404 page not found</h1>
+                <div class="content">
+                    <p><b>re-route</b></p>
+                    <ul>
+                        <li>
+                            <a href="/blog">
+                                🪴 garden
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/projects">
+                                👨‍💻 projects
+                            </a>
+                        </li>
+                        {/*
+                        <li>
+                            Browse photo 
+                            <a href="albums">
+                                <b>📷 albums</b> 
+                            </a>
+                        </li>
+                        */}
+                    </ul>
+            </div>
+		</Browser>
+	</body>
+</html>
+
