@@ -10,7 +10,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 const projectsCollection = await getCollection('projects');
 
 const projects = await projectsCollection.sort(
-    (a, b) => new Date(b.data.pubDate.valueOf()) - new Date(a.data.pubDate.valueOf())
+    (a, b) => Number(new Date(b.data.pubDate.valueOf())) - 
+      Number(new Date(a.data.pubDate.valueOf()))
 );
 ---
 
@@ -43,7 +44,8 @@ const projects = await projectsCollection.sort(
 								<Card 
 									title={proj.data.title}
 									footer={`Updated ${
-										new Date(proj.data.pubDate).toLocaleDateString('en-us', {
+										new Date(proj.data.pubDate)
+                                          .toLocaleDateString('en-us', {
 											year: 'numeric',
 											month: 'short',
 											day: 'numeric',
