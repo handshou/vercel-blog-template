@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BlogPost.astro';
 import { client } from '../../../tina/__generated__/client';
 import { MyComponent } from '../../components/posts';
 
-Astro.response.headers.set('Cache-Control', 'max-age=3600')
+Astro.response.headers.set('Cache-Control', 'max-age=30')
 Astro.response.headers.set('Cache-Control', 's-maxage=60')
 
 const { slug } = Astro.params;
