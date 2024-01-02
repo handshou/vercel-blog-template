@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import cloudflare from "@astrojs/cloudflare";
 
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
