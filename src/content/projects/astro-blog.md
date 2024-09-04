@@ -6,7 +6,7 @@ pubDate: 2023-01-02T00:00:00.000Z
 
 A long term project of designing and writing process.
 
-## Updates
+## Update
 
 Sep 22 2023, Update Astro v1 to v3\
 Apr 10 2023, Integrate Image\
