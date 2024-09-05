@@ -19,6 +19,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env: 
+        BASE_URL: ${{ github.event.deployment_status.environment_url }}
     - uses: actions/upload-artifact@v3
       if: always()
       with:
