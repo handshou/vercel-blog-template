@@ -8,6 +8,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -20,9 +21,9 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test
       env: 
-        BASE_URL: ${{ github.event.deployment_status.environment_url }}
+        BASE_URL: ${{ github.event.deployment_status.target_url }}
     - uses: actions/upload-artifact@v3
-      if: always()
+      if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/
